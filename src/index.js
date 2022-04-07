@@ -60,9 +60,11 @@ const Carousel = ({ itemsList = [] }) =>
       })
     )
 
-  const allYoutubeLinks = document.querySelectorAll('.js-video-link')
-  // NodeList
-  allYoutubeLinks.forEach(link => {
-    link.addEventListener('click', modalListener)
+  document.body.addEventListener('click', event => {
+    // IMG / A
+    const tagName = event.target.tagName
+    if (['IMG', 'A'].includes(tagName)) {
+      modalListener(event)
+    }
   })
 })(document, window)
